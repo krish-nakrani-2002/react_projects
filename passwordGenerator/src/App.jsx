@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react'
 function App() {
   const [length, setLength] = useState(8)
   const [numAllowd, setNumAllowd] = useState(false)
-  const [charAllowd, setCharAllowd] = useState(true)
+  const [charAllowd, setCharAllowd] = useState(false)
   const [Password, setPassword] = useState("")
 
   const passwdGenerator = useCallback(() => {
@@ -47,6 +47,28 @@ function App() {
           onChange={(e) => {setLength(e.target.value)}}
           />
           <label>Length: {length}</label>
+        </div>
+        <div className='flex items-center gap-x-1'>
+          <input 
+          type="checkbox"
+          defaultChecked={numAllowd}
+          id='numberInput'
+          onChange={() => {
+            setNumAllowd((prev) => !prev); 
+          }}
+          />
+          <label htmlFor="numberInput">Numbers</label>
+        </div>
+        <div className='flex items-center gap-x-1'>
+        <input 
+          type="checkbox"
+          defaultChecked={charAllowd}
+          id='charInput'
+          onChange={() => {
+            setCharAllowd((prev) => !prev); 
+          }}
+          />
+          <label htmlFor="charInput">Characters</label>
         </div>
       </div>
     </div>
