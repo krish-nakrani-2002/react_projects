@@ -1,6 +1,4 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useCallback } from 'react'
 import './App.css'
 
 function App() {
@@ -8,6 +6,14 @@ function App() {
   const [numAllowd, setNumAllowd] = useState(false)
   const [charAllowd, setCharAllowd] = useState(true)
   const [Password, setPassword] = useState("")
+
+  const passwdGenerator = useCallback(() => {
+    let pass = ""
+    let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+    if (numAllowd) str += "0123456789"
+    if (charAllowd) str += "!@#$%^&*()-_=+\|[]{}?`~"
+      
+  }, [length, numAllowd, charAllowd, setPassword])
 
 
   return (
